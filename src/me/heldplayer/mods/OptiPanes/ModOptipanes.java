@@ -67,43 +67,44 @@ public class ModOptipanes {
             cfg.save();
         }
 
-        blockIds[0] = 3000;
+        this.blockIds[0] = 3000;
 
-        renderIds[0] = RenderingRegistry.getNextAvailableRenderId();
+        this.renderIds[0] = RenderingRegistry.getNextAvailableRenderId();
     }
 
     @Init
     public void init(FMLInitializationEvent event) {
         //// Blocks
         // Setup
-        blockOptiPane = new BlockOptipane(blockIds[0], this.paneTextures, this.paneNames, Material.rock);
-        blockOptiPane.setRenderId(renderIds[0]).setCreativeTab(creativeTab);
+        this.blockOptiPane = new BlockOptipane(this.blockIds[0], this.paneTextures, this.paneNames, Material.rock);
+        this.blockOptiPane.setRenderId(this.renderIds[0]).setCreativeTab(this.creativeTab);
 
         // Rendering
-        RenderingRegistry.registerBlockHandler(new BlockRendererOptipane(renderIds[0]));
+        RenderingRegistry.registerBlockHandler(new BlockRendererOptipane(this.renderIds[0]));
 
         // Names
-        blockOptiPane.setUnlocalizedName("barbedWire");
+        this.blockOptiPane.setUnlocalizedName("barbedWire");
         LanguageRegistry.instance().addStringLocalization("tile.optipane.name", "Optipane");
 
         // Finalize
-        GameRegistry.registerBlock(blockOptiPane, ItemOptipaneBlock.class, "heldplayer.mods.optipane", "Optipanes");
+        GameRegistry.registerBlock(this.blockOptiPane, ItemOptipaneBlock.class, "heldplayer.mods.optipane", "Optipanes");
 
         // Recipes
         GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 16, 0), "ggg", "ggg", "ggg", 'g', Block.blocksList[Block.glass.blockID]);
 
         for (int i = 0; i < this.paneTextures.length; i++) {
-            if (this.paneRegisterers[i])
-                GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, i), new String[] { "ppp", "pbp", "ppp" }, 'b', Block.blocksList[paneBlocks[i]], 'p', new ItemStack(this.blockOptiPane, 1, 0));
+            if (this.paneRegisterers[i]) {
+                GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, i), new String[] { "ppp", "pbp", "ppp" }, 'b', Block.blocksList[this.paneBlocks[i]], 'p', new ItemStack(this.blockOptiPane, 1, 0));
+            }
         }
 
-        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 2), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[paneBlocks[2]], 1, 0), 'p', new ItemStack(this.blockOptiPane, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 3), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[paneBlocks[3]], 1, 1), 'p', new ItemStack(this.blockOptiPane, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 4), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[paneBlocks[4]], 1, 2), 'p', new ItemStack(this.blockOptiPane, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 5), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[paneBlocks[5]], 1, 3), 'p', new ItemStack(this.blockOptiPane, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 11), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[paneBlocks[11]], 1, 0), 'p', new ItemStack(this.blockOptiPane, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 12), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[paneBlocks[12]], 1, 1), 'p', new ItemStack(this.blockOptiPane, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 13), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[paneBlocks[13]], 1, 2), 'p', new ItemStack(this.blockOptiPane, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 2), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[this.paneBlocks[2]], 1, 0), 'p', new ItemStack(this.blockOptiPane, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 3), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[this.paneBlocks[3]], 1, 1), 'p', new ItemStack(this.blockOptiPane, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 4), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[this.paneBlocks[4]], 1, 2), 'p', new ItemStack(this.blockOptiPane, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 5), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[this.paneBlocks[5]], 1, 3), 'p', new ItemStack(this.blockOptiPane, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 11), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[this.paneBlocks[11]], 1, 0), 'p', new ItemStack(this.blockOptiPane, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 12), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[this.paneBlocks[12]], 1, 1), 'p', new ItemStack(this.blockOptiPane, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(this.blockOptiPane, 8, 13), new String[] { "ppp", "pbp", "ppp" }, 'b', new ItemStack(Block.blocksList[this.paneBlocks[13]], 1, 2), 'p', new ItemStack(this.blockOptiPane, 1, 0));
 
         //// Others
         LanguageRegistry.instance().addStringLocalization("itemGroup.optipane", "Optipanes");

@@ -63,7 +63,7 @@ public class BlockOptipane extends BlockPane {
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
     public void getSubBlocks(int id, CreativeTabs tabs, List itemList) {
-        for (int i = 0; i < icons.length; i++) {
+        for (int i = 0; i < this.icons.length; i++) {
             itemList.add(new ItemStack(id, 1, i));
         }
     }
